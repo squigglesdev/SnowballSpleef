@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "snowballspleef",
+  "version": "${version}",
+  "name": "SnowballSpleef",
+  "description": "Allows snowballs to destroy certain blocks when hitting them",
+  "authors": [
+    "Squigglesdev"
+  ],
+  "contact": {
+    "repo": "https://github.com/squigglesdev/SnowballSpleefowballspleef"
+  },
+  "license": "MIT",
+  "icon": "assets/snowballspleef/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "dev.squiggles.snowballspleef.client.SnowballSpleefClient"
+    ],
+    "main": [
+      "dev.squiggles.snowballspleef.SnowballSpleef"
+    ]
+  },
+  "mixins": [
+    "snowballspleef.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
