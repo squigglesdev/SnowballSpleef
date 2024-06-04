@@ -19,7 +19,7 @@ public class SnowballBreakableBlocksCommand {
     private static Boolean ignitesTNT = BlockListStorage.loadIgnitesTnt();
 
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess registryAccess, CommandManager.RegistrationEnvironment registrationEnvironment) {
-        dispatcher.register(CommandManager.literal("snowballbreakable")
+        dispatcher.register(CommandManager.literal("snowball")
                 .requires(source -> source.hasPermissionLevel(2))
                 .then(CommandManager.literal("add")
                         .then(CommandManager.argument("block", StringArgumentType.string())
@@ -37,7 +37,7 @@ public class SnowballBreakableBlocksCommand {
                                 })))
                 .then(CommandManager.literal("list")
                         .executes(context -> {
-                            StringBuilder blockList = new StringBuilder("Breakable blocks: ");
+                            StringBuilder blockList = new StringBuilder("The current breakable blocks are: ");
                             for (Block block : breakableBlocks) {
                                 blockList.append(Registries.BLOCK.getId(block).toString()).append(", ");
                             }
