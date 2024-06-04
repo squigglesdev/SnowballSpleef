@@ -1,5 +1,12 @@
 # ![Snowball Spleef](https://cdn.modrinth.com/data/cached_images/bd4ae5602fffc28590dbca7771ebf5a5f345abe5.png)
-Configurable server-side mod that brings back the Tumble functionality of snowballs from Legacy Console Edition.
+A configurable server-side mod that brings back the Tumble functionality of snowballs from Legacy Console Edition.
+
+<center>
+<img src="https://cdn.modrinth.com/data/cached_images/8e05af937c2e2d97c155c0d9c8201edcc1fd1bf2.png" width="150" alt="Modrinth" />
+&nbsp;  &nbsp;  &nbsp;
+<img src="https://cdn.modrinth.com/data/cached_images/4efd8ed27cfea30edc011e5e504187f23312f593.png" width="159" alt="Fabric API"/>
+</center>
+
 
 ## Features
 
