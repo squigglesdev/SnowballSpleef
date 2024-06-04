@@ -7,18 +7,25 @@ Configurable server-side mod that brings back the Tumble functionality of snowba
 
 Server admins can, using the `/snowball` command, specify a list of blocks that can be destroyed by snowballs:
 ```mcfunction
-/snowball add stone
-
+snowball add stone
+```
+```
 >> Added block stone to breakable list
 ```
-```mcfunction
-/snowball remove stone
+<br />
 
+```mcfunction
+snowball remove stone
+```
+```
 >> Removed block stone from breakable list
 ```
-```mcfunction
-/snowball list
+<br />
 
+```mcfunction
+snowball list
+```
+```
 >> The current breakable blocks are: stone, grass_block, ice
 ```
 
@@ -27,13 +34,17 @@ Server admins can, using the `/snowball` command, specify a list of blocks that 
 Server admins can also specify if snowballs ignite TNT, similar to the Legacy Console Edition minigame:
 
 ```mcfunction
-/snowball ignitesTNT true
-
+snowball ignitesTNT true
+```
+```
 >> SnowballsIgniteTNT set to true
 ```
-```mcfunction
-/snowball ignitesTNT false
+<br />
 
+```mcfunction
+snowball ignitesTNT false
+```
+```
 >> SnowballsIgniteTNT set to false
 ```
 
