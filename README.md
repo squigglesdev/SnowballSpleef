@@ -2,7 +2,9 @@
 A configurable server-side mod that brings back the Tumble functionality of snowballs from Legacy Console Edition.
 
 <div align="center">
-<img src="https://cdn.modrinth.com/data/cached_images/8e05af937c2e2d97c155c0d9c8201edcc1fd1bf2.png" width="150" alt="Modrinth" />&nbsp;  &nbsp;  &nbsp;<img src="https://cdn.modrinth.com/data/cached_images/4efd8ed27cfea30edc011e5e504187f23312f593.png" width="159" alt="Fabric API"/>
+  <a href="https://modrinth.com/mod/snowball-spleef"><img src="https://cdn.modrinth.com/data/cached_images/8e05af937c2e2d97c155c0d9c8201edcc1fd1bf2.png" width="150" alt="Modrinth" /></a>
+  &nbsp;  &nbsp;  &nbsp;
+  <a href="https://modrinth.com/mod/fabric-api"><img src="https://cdn.modrinth.com/data/cached_images/4efd8ed27cfea30edc011e5e504187f23312f593.png" width="159" alt="Fabric API"/></a>
 </div>
 
 
