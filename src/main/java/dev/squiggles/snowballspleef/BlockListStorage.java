@@ -17,7 +17,8 @@ import java.util.Set;
 public class BlockListStorage {
     private static final Gson GSON = new Gson();
     private static final Type BLOCK_SET_TYPE = new TypeToken<Set<String>>() {}.getType();
-    private static final String FILE_NAME = "config/snowballspleef/breakable_blocks.json";
+    private static final String BREAKABLE_FILE_NAME = "config/snowballspleef/breakable_blocks.json";
+    private static final String IGNITES_FILE_NAME = "config/snowballspleef/ignites_tnt.json";
 
     public static void saveBlockList(Set<Block> blocks) {
         Set<String> blockIds = new HashSet<>();
@@ -25,10 +26,10 @@ public class BlockListStorage {
             blockIds.add(Registries.BLOCK.getId(block).toString());
         }
 
-        Path filePath = Paths.get(FILE_NAME);
+        Path filePath = Paths.get(BREAKABLE_FILE_NAME);
         try {
             Files.createDirectories(filePath.getParent());
-            try (Writer writer = new FileWriter(FILE_NAME)) {
+            try (Writer writer = new FileWriter(BREAKABLE_FILE_NAME)) {
                 GSON.toJson(blockIds, writer);
             }
         } catch (IOException e) {
@@ -38,9 +39,9 @@ public class BlockListStorage {
 
     public static Set<Block> loadBlockList() {
         Set<Block> blocks = new HashSet<>();
-        Path filePath = Paths.get(FILE_NAME);
+        Path filePath = Paths.get(BREAKABLE_FILE_NAME);
         if (Files.exists(filePath)) {
-            try (Reader reader = new FileReader(FILE_NAME)) {
+            try (Reader reader = new FileReader(BREAKABLE_FILE_NAME)) {
                 Set<String> blockIds = GSON.fromJson(reader, BLOCK_SET_TYPE);
                 if (blockIds != null) {
                     for (String blockId : blockIds) {
@@ -56,4 +57,32 @@ public class BlockListStorage {
         }
         return blocks;
     }
+
+    public static Boolean loadIgnitesTnt() {
+        Path filePath = Paths.get(IGNITES_FILE_NAME);
+        if (Files.exists(filePath)) {
+            try (Reader reader = new FileReader(filePath.toString())) {
+                Boolean ignitesTnt = GSON.fromJson(reader, Boolean.class);
+                if (ignitesTnt != null) {
+                    return ignitesTnt;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return false; // Default value if file doesn't exist or an error occurs
+    }
+
+    public static void saveIgnitesTnt(Boolean ignitesTnt) {
+        Path filePath = Paths.get(IGNITES_FILE_NAME);
+        try {
+            Files.createDirectories(filePath.getParent());
+            try (Writer writer = new FileWriter(filePath.toString())) {
+                GSON.toJson(ignitesTnt, writer);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
+
