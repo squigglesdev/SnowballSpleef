@@ -58,3 +58,7 @@ snowball ignitesTNT false
 ### Hurt Players
 
 Snowballs now deal a small amount of damage and knockback to players, similar to the Legacy Console Edition minigame.
+
+## Other Projects
+
+Like SnowballSpleef? Consider checking out my other Tumble mechanic port, [RocketSpleef](https://github.com/squigglesdev/RocketSpleef/)!
