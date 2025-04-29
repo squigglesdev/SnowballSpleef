@@ -64,6 +64,7 @@ snowball damagePlayers true
 ```
 >> SnowballsDamagePlayers set to true
 ```
+<br />
 ```mcfunction
 snowball damagePlayers false
 ```
