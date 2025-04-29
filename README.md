@@ -57,8 +57,14 @@ snowball ignitesTNT false
 
 ### Hurt Players
 
-Snowballs now deal a small amount of damage and knockback to players, similar to the Legacy Console Edition minigame.
+Server admins can also specify if snowballs deal a small amount of damage and knockback to players:
+```mcfunction
+snowball damagePlayers true
 
-## Other Projects
+>> SnowballsDamagePlayers set to true
+```
+```mcfunction
+snowball damagePlayers false
 
-Like SnowballSpleef? Consider checking out my other Tumble mechanic port, [RocketSpleef](https://github.com/squigglesdev/RocketSpleef/)!
+>> SnowballsDamagePlayers set to false
+```
