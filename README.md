@@ -60,11 +60,13 @@ snowball ignitesTNT false
 Server admins can also specify if snowballs deal a small amount of damage and knockback to players:
 ```mcfunction
 snowball damagePlayers true
-
+```
+```
 >> SnowballsDamagePlayers set to true
 ```
 ```mcfunction
 snowball damagePlayers false
-
+```
+```
 >> SnowballsDamagePlayers set to false
 ```
