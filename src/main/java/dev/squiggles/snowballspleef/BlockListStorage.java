@@ -19,6 +19,7 @@ public class BlockListStorage {
     private static final Type BLOCK_SET_TYPE = new TypeToken<Set<String>>() {}.getType();
     private static final String BREAKABLE_FILE_NAME = "config/snowballspleef/breakable_blocks.json";
     private static final String IGNITES_FILE_NAME = "config/snowballspleef/ignites_tnt.json";
+    private static final String DAMAGE_FILE_NAME = "config/snowballspleef/damage_players.json";
 
     public static void saveBlockList(Set<Block> blocks) {
         Set<String> blockIds = new HashSet<>();
@@ -45,7 +46,7 @@ public class BlockListStorage {
                 Set<String> blockIds = GSON.fromJson(reader, BLOCK_SET_TYPE);
                 if (blockIds != null) {
                     for (String blockId : blockIds) {
-                        Block block = Registries.BLOCK.get(new Identifier(blockId));
+                        Block block = Registries.BLOCK.get(Identifier.of(blockId));
                         if (block != null) {
                             blocks.add(block);
                         }
@@ -79,6 +80,33 @@ public class BlockListStorage {
             Files.createDirectories(filePath.getParent());
             try (Writer writer = new FileWriter(filePath.toString())) {
                 GSON.toJson(ignitesTnt, writer);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static Boolean loadDamagePlayers() {
+        Path filePath = Paths.get(DAMAGE_FILE_NAME);
+        if (Files.exists(filePath)) {
+            try (Reader reader = new FileReader(filePath.toString())) {
+                Boolean damagePlayers = GSON.fromJson(reader, Boolean.class);
+                if (damagePlayers != null) {
+                    return damagePlayers;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return false; // Default value if file doesn't exist or an error occurs
+    }
+
+    public static void saveDamagePlayers(Boolean damagePlayers) {
+        Path filePath = Paths.get(DAMAGE_FILE_NAME);
+        try {
+            Files.createDirectories(filePath.getParent());
+            try (Writer writer = new FileWriter(filePath.toString())) {
+                GSON.toJson(damagePlayers, writer);
             }
         } catch (IOException e) {
             e.printStackTrace();

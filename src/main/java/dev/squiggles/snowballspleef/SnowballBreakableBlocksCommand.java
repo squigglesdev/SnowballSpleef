@@ -17,6 +17,7 @@ public class SnowballBreakableBlocksCommand {
 
     private static final Set<Block> breakableBlocks = BlockListStorage.loadBlockList();
     private static Boolean ignitesTNT = BlockListStorage.loadIgnitesTnt();
+    private static Boolean damagePlayers = BlockListStorage.loadDamagePlayers();
 
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess registryAccess, CommandManager.RegistrationEnvironment registrationEnvironment) {
         dispatcher.register(CommandManager.literal("snowball")
@@ -25,8 +26,8 @@ public class SnowballBreakableBlocksCommand {
                         .then(CommandManager.argument("block", StringArgumentType.string())
                                 .executes(context -> {
                                     String blockId = StringArgumentType.getString(context, "block");
-                                    Block block = Registries.BLOCK.get(new Identifier(blockId));
-                                    if (block != Registries.BLOCK.get(new Identifier("this_does_not_exist"))) {
+                                    Block block = Registries.BLOCK.get(Identifier.of(blockId));
+                                    if (block != Registries.BLOCK.get(Identifier.of("this_does_not_exist"))) {
                                         breakableBlocks.add(block);
                                         BlockListStorage.saveBlockList(breakableBlocks);
                                         context.getSource().sendFeedback(() -> Text.literal("Added block " + blockId + " to breakable list"), true);
@@ -48,7 +49,7 @@ public class SnowballBreakableBlocksCommand {
                         .then(CommandManager.argument("block", StringArgumentType.string())
                                 .executes(context -> {
                                     String blockId = StringArgumentType.getString(context, "block");
-                                    Block block = Registries.BLOCK.get(new Identifier(blockId));
+                                    Block block = Registries.BLOCK.get(Identifier.of(blockId));
                                     if (breakableBlocks.remove(block)) {
                                         BlockListStorage.saveBlockList(breakableBlocks);
                                         context.getSource().sendFeedback(() -> Text.literal("Removed block " + blockId + " from breakable list"), true);
@@ -71,6 +72,23 @@ public class SnowballBreakableBlocksCommand {
                         )
                         .executes(context -> {
                             String value = ignitesTNT ? "Snowballs currently DO ignite TNT." : "Snowballs currently DON'T ignite TNT.";
+                            context.getSource().sendFeedback(() -> Text.literal(value), false);
+                            return 1;
+                        })
+                )
+                .then(CommandManager.literal("damagePlayers")
+                        .then(CommandManager.argument("value", BoolArgumentType.bool())
+                                .executes(context -> {
+                                    Boolean arg = BoolArgumentType.getBool(context, "value");
+                                    damagePlayers = arg;
+                                    BlockListStorage.saveDamagePlayers(arg);
+                                    String value = damagePlayers ? "true" : "false";
+                                    context.getSource().sendFeedback(() -> Text.literal("SnowballsDamagePlayers set to: " + value), false);
+                                    return 1;
+                                })
+                        )
+                        .executes(context -> {
+                            String value = damagePlayers ? "Snowballs currently DO damage players." : "Snowballs currently DON'T damage players.";
                             context.getSource().sendFeedback(() -> Text.literal(value), false);
                             return 1;
                         })

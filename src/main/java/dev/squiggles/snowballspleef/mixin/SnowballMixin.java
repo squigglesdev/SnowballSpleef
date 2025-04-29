@@ -12,11 +12,7 @@ import net.minecraft.entity.mob.BlazeEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.thrown.SnowballEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.state.property.Properties;
-import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
@@ -81,12 +77,13 @@ public abstract class SnowballMixin {
     private void onEntityHit(ThrownItemEntity instance, EntityHitResult entityHitResult) {
         Entity entity = entityHitResult.getEntity();
         int i = entity instanceof BlazeEntity ? 3 : 0;
-        entity.damage(instance.getDamageSources().thrown((SnowballEntity) (Object) this, ((SnowballEntity) (Object) this).getOwner()), (float) i);
+        World world = ((SnowballEntity) (Object) this).getWorld();
+        entity.damage((ServerWorld) world, instance.getDamageSources().thrown((SnowballEntity) (Object) this, ((SnowballEntity) (Object) this).getOwner()), (float) i);
 
         if (entity instanceof PlayerEntity) {
             // Replace the arguments with appropriate values
             ((LivingEntity) entity).takeKnockback(0.5, ((SnowballEntity) (Object) this).getX() - entity.getX(), ((SnowballEntity) (Object) this).getZ() - entity.getZ());
-            entity.damage(instance.getDamageSources().thrown((SnowballEntity) (Object) this, ((SnowballEntity) (Object) this).getOwner()), 1.0F);
+            entity.damage((ServerWorld) world, instance.getDamageSources().thrown((SnowballEntity) (Object) this, ((SnowballEntity) (Object) this).getOwner()), 1.0F);
         }
     }
 }
