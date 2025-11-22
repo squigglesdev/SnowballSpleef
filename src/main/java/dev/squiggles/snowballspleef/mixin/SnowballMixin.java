@@ -30,10 +30,10 @@ public abstract class SnowballMixin {
 
     @Inject(method = "onCollision", at = @At("HEAD"))
     private void onCollision(HitResult hitResult, CallbackInfo info) {
-        if (!((SnowballEntity) (Object) this).getWorld().isClient) {
+        if (!((SnowballEntity) (Object) this).getEntityWorld().isClient()) {
             if (hitResult.getType() == HitResult.Type.BLOCK) {
                 BlockHitResult blockHitResult = (BlockHitResult) hitResult;
-                World world = ((SnowballEntity) (Object) this).getWorld();
+                World world = ((SnowballEntity) (Object) this).getEntityWorld();
                 BlockPos blockPos = blockHitResult.getBlockPos();
 
                 // Check the block directly hit
@@ -77,7 +77,7 @@ public abstract class SnowballMixin {
     private void onEntityHit(ThrownItemEntity instance, EntityHitResult entityHitResult) {
         Entity entity = entityHitResult.getEntity();
         int i = entity instanceof BlazeEntity ? 3 : 0;
-        World world = ((SnowballEntity) (Object) this).getWorld();
+        World world = ((SnowballEntity) (Object) this).getEntityWorld();
         entity.damage((ServerWorld) world, instance.getDamageSources().thrown((SnowballEntity) (Object) this, ((SnowballEntity) (Object) this).getOwner()), (float) i);
 
         if (entity instanceof PlayerEntity) {

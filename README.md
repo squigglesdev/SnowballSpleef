@@ -1,5 +1,5 @@
 # ![Snowball Spleef](https://cdn.modrinth.com/data/cached_images/bd4ae5602fffc28590dbca7771ebf5a5f345abe5.png)
-A configurable server-side mod that brings back the Tumble functionality of snowballs from Legacy Console Edition.
+A configurable server-side mod that reinstates the Tumble functionality of snowballs from Legacy Console Edition.
 
 <div align="center">
   <a href="https://modrinth.com/mod/snowball-spleef"><img src="https://cdn.modrinth.com/data/cached_images/8e05af937c2e2d97c155c0d9c8201edcc1fd1bf2.png" width="150" alt="Modrinth" /></a>
@@ -38,7 +38,7 @@ snowball list
 
 ### Ignite TNT
 
-Server admins can also specify if snowballs ignite TNT, similar to the Legacy Console Edition minigame:
+Server admins can also specify if snowballs ignite TNT, similar to the original minigame:
 
 ```mcfunction
 snowball ignitesTNT true

@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "id": "snowballspleef",
   "version": "${version}",
-  "name": "SnowballSpleef",
-  "description": "Allows snowballs to destroy certain blocks when hitting them",
+  "name": "Snowball Spleef",
+  "description": "A configurable server-side mod that reinstates the Tumble functionality of snowballs from Legacy Console Edition.",
   "authors": [
     "Squigglesdev"
   ],
